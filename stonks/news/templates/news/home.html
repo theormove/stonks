@@ -1,16 +1,26 @@
 {% extends "news/base.html" %}
 
 {% block content %}
+				<section class="section start">
+					<div class="slogan">СОСАТЬ - не ВРЕДНО, а даже ПОЛЕЗНО</div>
+				</section>
+				<section class="section how">
+					<input type="button" id="button" value="Кнопка">
+					<script>
+					  button.onclick = function() {
+					    alert( 'Текущая прокрутка сверху: ' + window.pageYOffset );
+					    var scrollHeight = Math.max(
+						  document.body.scrollHeight, document.documentElement.scrollHeight,
+						  document.body.offsetHeight, document.documentElement.offsetHeight,
+						  document.body.clientHeight, document.documentElement.clientHeight
+						);
 
-<h1>Economic news</h1>
-<div class = "row">
-{% for ent in news %}
-<img src = "{{ent.image.url}}">
-<div class="col-sm-4">
-<h2>{{ ent.title }}</h2>
-<p class = "lead">{{ ent.content }}</p>
-<h4>{{ ent.date_posted }}</h4>
-</div>
-{% endfor %}
-</div>	
-{% endblock content %}
+						alert( 'Высота с учётом прокрутки: ' + scrollHeight );
+						};
+					</script>
+					КАК
+				</section>
+				<section class="section about">
+					О нас
+				</section>
+{% endblock content %}	

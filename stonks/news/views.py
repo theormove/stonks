@@ -12,3 +12,13 @@ def home(request):
 
 def about(request):
 	return render(request,'news/about.html')
+
+def financial(request):
+	context = {
+		'news' : Post.objects.all()
+	}
+	return render(request, 'news/financial.html', context)	
+
+
+def rub(request):
+	return render(request,'news/rub.html')
