@@ -1,0 +1,67 @@
+{% extends 'news/base.html' %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'news/style/css/rub.css' %}">
+{% endblock style %}
+
+{% block content %}
+				<div class="page_nav">
+					<div class="page_name"><a href="financial.html">Financial</div>
+					<ul class="page_menu">
+						<li class="page_paraghraph choosed"><a href="{% url 'news-rub' %}">RUB</a></li>
+						<li class="page_paraghraph"><a href="#">GBP</a></li>
+						<li class="page_paraghraph"><a href="#">USD</a></li>
+						<li class="page_paraghraph"><a href="#">EUR</a></li>
+						<li class="page_paraghraph" style="border: none;"><a href="#">CNY</a></li>
+					</ul>
+				</div>
+				<div class="article_section_wrapper">
+					<div class="article_info_wrapper">
+						тут инфа откуда статья кто написал и дата статьи 
+					</div>
+					<div class="article_wrapper">
+						А тут статья
+					</div>
+				</div>
+				<div class="charts">
+					<div class="chart_wrapper">
+						<div class="chart_header">
+							<div class="chart_name"><a href="{% url 'news-rub' %}">RUB</a></div>
+							<div class="chart_info"><div class="info_name">Last price:</div><div class="info_value">24</div></div>
+							<div class="chart_info"><div class="info_name">Daily change:</div><div class="info_value">43</div></div>
+							<div class="chart_info"><div class="info_name">Today's open:</div><div class="info_value">543</div></div>
+							<div class="chart_info"><div class="info_name">24h volume:</div><div class="info_value">346</div></div>
+						</div>
+						<div class="chart">
+							
+						</div>
+					</div>
+					<div class="chart_wrapper" style="border: 1px solid grey;">
+						Здесь будет тоже полезная информация там числа какие то Надо у Ярика спросить, таблица или диаграмма
+					</div>
+				</div>
+				<div class="last_news">
+					<div class="news_header">Last news</div>
+					<div class="news">
+						<div class="news_wrapper"></div>
+						<div class="news_wrapper"></div>
+						<div class="news_wrapper"></div>
+						<div class="news_wrapper"></div>
+					</div>
+				</div>
+				<div class="page_extra_nav">
+					<div class="page_nav_name"><a href="financial.html">Financial</div>
+					<div class="triangle"></div>
+					<ul class="page_menu">
+						<li class="page_paraghraph choosed"><a href="{% url 'news-rub' %}">RUB</a></li>
+						<li class="page_paraghraph"><a href="#">GBP</a></li>
+						<li class="page_paraghraph"><a href="#">USD</a></li>
+						<li class="page_paraghraph"><a href="#">EUR</a></li>
+						<li class="page_paraghraph" style="border: none;"><a href="#">CNY</a></li>
+					</ul>
+				</div>
+			</div>
+		</main>
+{% endblock content %}		

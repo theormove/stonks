@@ -1,0 +1,16 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+
+<h1>Economic news</h1>
+<div class = "row">
+{% for ent in news %}
+<img src = "{{ent.image.url}}">
+<div class="col-sm-4">
+<h2>{{ ent.title }}</h2>
+<p class = "lead">{{ ent.content }}</p>
+<h4>{{ ent.date_posted }}</h4>
+</div>
+{% endfor %}
+</div>	
+{% endblock content %}
