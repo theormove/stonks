@@ -1,10 +1,8 @@
 {% extends "news/base.html" %}
 {% load static %}
-{% block style %}
-<link rel="stylesheet" href="{% static 'news/style/css/financial.css' %}">
-{% endblock style %}
+{% block style %} <link rel="stylesheet" href="{% static 'news/style/css/financial.css' %}"> {% endblock style %}
 {% block content %}
-<div class="page_nav">
+				<div class="page_nav">
 					<div class="page_name">Financial</div>
 					<ul class="page_menu">
 						<li class="page_paraghraph"><a href="{% url 'news-rub' %}">RUB</a></li>
@@ -17,7 +15,7 @@
 				<div class="charts">
 					<div class="chart_wrapper">
 						<div class="chart_header">
-							<div class="chart_name"><a href="#">RUB</a></div>
+							<div class="chart_name"><a href="rub.html">RUB</a></div>
 							<div class="chart_info"><div class="info_name">Last price:</div><div class="info_value">24</div></div>
 							<div class="chart_info"><div class="info_name">Daily change:</div><div class="info_value">43</div></div>
 							<div class="chart_info"><div class="info_name">Today's open:</div><div class="info_value">543</div></div>
@@ -94,19 +92,21 @@
 				<div class="last_news">
 					<div class="news_header">Last news</div>
 					<div class="news">
-						{% for ent in news %}
-						<div class="news_wrapper">{{ ent.title }}{{ ent.content }}{{ ent.date_posted }}</div>
-						{% endfor %}
+						<div class="news_wrapper"></div>
+						<div class="news_wrapper"></div>
+						<div class="news_wrapper"></div>
+						<div class="news_wrapper"></div>
+					</div>
 				</div>
 				<div class="page_extra_nav">
 					<div class="page_nav_name"><a href="{% url 'news-financial' %}">Financial</div>
 					<div class="triangle"></div>
 					<ul class="page_menu">
-						<li class="page_paraghraph"><a href="#">RUB</a></li>
+						<li class="page_paraghraph"><a href="{% url 'news-rub' %}">RUB</a></li>
 						<li class="page_paraghraph"><a href="#">GBP</a></li>
 						<li class="page_paraghraph"><a href="#">USD</a></li>
 						<li class="page_paraghraph"><a href="#">EUR</a></li>
 						<li class="page_paraghraph" style="border: none;"><a href="#">CNY</a></li>
 					</ul>
 				</div>
-{% endblock content %}		
+			{% endblock content %}

@@ -1,14 +1,9 @@
-{% extends 'news/base.html' %}
-
-{% load static %}
-
-{% block style %}
-    <link rel="stylesheet" href="{% static 'news/style/css/rub.css' %}">
-{% endblock style %}
-
-{% block content %}
+{%extends 'news/base.html'%}
+{%load static%}
+{%block style%}<link rel="stylesheet" href="{% static 'news/style/css/rub.css' %}">{%endblock style%}
+{% block content%}
 				<div class="page_nav">
-					<div class="page_name"><a href="financial.html">Financial</div>
+					<div class="page_name"><a href="{% url 'news-financial' %}">Financial</div>
 					<ul class="page_menu">
 						<li class="page_paraghraph choosed"><a href="{% url 'news-rub' %}">RUB</a></li>
 						<li class="page_paraghraph"><a href="#">GBP</a></li>
@@ -28,7 +23,7 @@
 				<div class="charts">
 					<div class="chart_wrapper">
 						<div class="chart_header">
-							<div class="chart_name"><a href="{% url 'news-rub' %}">RUB</a></div>
+							<div class="chart_name"><a href="rub.html">RUB</a></div>
 							<div class="chart_info"><div class="info_name">Last price:</div><div class="info_value">24</div></div>
 							<div class="chart_info"><div class="info_name">Daily change:</div><div class="info_value">43</div></div>
 							<div class="chart_info"><div class="info_name">Today's open:</div><div class="info_value">543</div></div>
@@ -52,7 +47,7 @@
 					</div>
 				</div>
 				<div class="page_extra_nav">
-					<div class="page_nav_name"><a href="financial.html">Financial</div>
+					<div class="page_nav_name"><a href="{% url 'news-financial' %}">Financial</div>
 					<div class="triangle"></div>
 					<ul class="page_menu">
 						<li class="page_paraghraph choosed"><a href="{% url 'news-rub' %}">RUB</a></li>
@@ -63,5 +58,4 @@
 					</ul>
 				</div>
 			</div>
-		</main>
-{% endblock content %}		
+		{%endblock content%}
