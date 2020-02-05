@@ -1,0 +1,2 @@
+# stonks
+rabotaem rebyata
