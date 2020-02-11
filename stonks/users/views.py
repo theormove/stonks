@@ -20,8 +20,6 @@ def profile(request):
 	if request.method == 'POST':
 		form = ProfileUpdateFrom(request.POST, instance = request.user.profile)
 		if form.is_valid():
-			#profile  = form.save(commit = False)
-			#profile.user  = request.user
 			form.save()
 			return redirect('profile')
 	else:

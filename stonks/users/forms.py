@@ -14,4 +14,4 @@ class ProfileUpdateFrom(forms.ModelForm):
 
 	class Meta:
 		model = Profile
-		fields = ('rub','gbp','usd','eur','cny')		
+		fields = ('rub','gbp','usd','eur','cny', 'glob')		

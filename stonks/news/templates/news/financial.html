@@ -92,10 +92,9 @@
 				<div class="last_news">
 					<div class="news_header">Last news</div>
 					<div class="news">
-						<div class="news_wrapper"></div>
-						<div class="news_wrapper"></div>
-						<div class="news_wrapper"></div>
-						<div class="news_wrapper"></div>
+						{% for article in news %}
+						<div class="news_wrapper">{{ article.title }}</div>
+						{% endfor %}
 					</div>
 				</div>
 				<div class="page_extra_nav">

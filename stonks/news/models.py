@@ -9,7 +9,7 @@ class Post(models.Model):
 	source = models.CharField(max_length = 1000)
 	content = models.TextField()
 	date_posted = models.DateTimeField(default = timezone.now)
-	image = models.ImageField(upload_to = "", default = None)
+	image = models.ImageField(upload_to = "", default = None, null = True)
 
 	def __str__(self):
 		return self.title
