@@ -1,7 +1,7 @@
-from .site_monitoring.aljazeera import aj_gather_data
-from .site_monitoring.reuters import re_gather_data
-from .site_monitoring.economist import ec_gather_data
-from .categorizerr import find_max_dict_value
+from site_monitoring.aljazeera import aj_gather_data
+from site_monitoring.reuters import re_gather_data
+from site_monitoring.economist import ec_gather_data
+from categorizerr import find_max_dict_value
 import django, sys, os, time
 
 os.chdir("..")
@@ -18,7 +18,7 @@ def check_for_updates():
         try:
             posts = aj_gather_data()
             for post in posts:
-            	Post(title = post.title, content = post.text, source = post.link, category = find_max_dict_value(post.text)).save()
+            	Post(title = post.title, content = post.text, source = post.link)#, category = find_max_dict_value(post.text)).save()
             posts = re_gather_data()
             for post in posts:
             	Post(title = post.title, content = post.text, source = post.link).save()
