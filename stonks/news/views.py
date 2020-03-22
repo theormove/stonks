@@ -24,8 +24,9 @@ def financial(request):
 				cats.append(field.name)
 		articles = []
 		for article in Post.objects.all():
-			if article.category in cats:
-				articles.append(article)
+			for cat in  article.category:
+				if cat in cats:
+					articles.append(article)
 		context = {
 			'news' : articles,
 		}	
@@ -44,8 +45,9 @@ def rub(request):
 				cats.append(field.name)
 		articles = []
 		for article in Post.objects.all():
-			if article.category in cats:
-				articles.append(article)
+			for cat in  article.category:
+				if cat in cats:
+					articles.append(article)
 		context = {
 			'news' : articles,
 		}	

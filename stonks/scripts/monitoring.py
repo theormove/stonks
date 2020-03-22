@@ -18,13 +18,13 @@ def check_for_updates():
         try:
             posts = aj_gather_data()
             for post in posts:
-            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)[0]).save()
+            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
             posts = re_gather_data()
             for post in posts:
-            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)[0]).save()
+            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
             posts = ec_gather_data()
             for post in posts:
-            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)[0]).save()
+            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
             time.sleep(60)
 
         except ConnectionError:
