@@ -53,13 +53,17 @@ def ec_gather_data():
             session = requests.Session()
             response = session.get(link)
             soup = bs(response.content, 'html.parser', from_encoding='utf_8_sig')
+            
+            try:
+                text_all = soup.find('div', class_='regwall__wrapper').find_all('p', class_='article__body-text')
+                for t in text_all:
+                    text += t.text
 
-            text_all = soup.find('div', class_='regwall__wrapper').find_all('p', class_='article__body-text')
-            for t in text_all:
-                text += t.text
-
-            article = Article(title, link, image, text, tags, region.find('a').text)
-            yield darticle
+                article = Article(title, link, image, text, tags, region.find('a').text)
+                yield darticle
+                
+            except AttributeError:
+                pass
 
     if no_updates:
         print("Economist: no new urls")
