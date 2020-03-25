@@ -1,0 +1,11 @@
+{% extends 'news/base.html' %}
+{% block content %}
+<div class='content-section'>
+	<form method="post">
+	{% csrf_token %}
+	<div>
+		<button name = "{{ btn }}" type = "{{ btn }}" value = "{{ btn }}" >{{ btn }}</button>
+	</div>
+	</form>
+</div>
+{% endblock content %}

@@ -11,5 +11,9 @@
 			<button>Save</button>
 		</div>
 	</form>
+	<div>
+		<h2>Your current subscription plan is {{ user.profile.subscription_plan }}</h2>
+		<a href = "{% url 'subscriptions' %}">Click here to change it</a>
+	</div>
 </div>
 {% endblock content %}
