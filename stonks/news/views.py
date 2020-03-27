@@ -1,10 +1,25 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Article
+
 
 def home(request):
-	context = {
-		'news' : Post.objects.all(),
-	}
+	if request.user.is_anonymous:
+		context = {
+			'news' : Article.objects.all(),
+		}
+	else:
+		cats = []
+		for field in request.user.profile._meta.fields:
+			if field.value_from_object(request.user.profile) == True:
+				cats.append(field.name)
+		arts = []
+		for art in Article.objects.all():
+			for cat in  art.category:
+				if cat in cats:
+					arts.append(art)
+		context = {
+			'news' : arts,
+		}	
 	return render(request,'news/home.html', context)
 
 # Create your views here.
@@ -15,20 +30,20 @@ def about(request):
 def financial(request):
 	if request.user.is_anonymous:
 		context = {
-			'news' : Post.objects.all(),
+			'news' : Article.objects.all(),
 		}
 	else:
 		cats = []
 		for field in request.user.profile._meta.fields:
 			if field.value_from_object(request.user.profile) == True:
 				cats.append(field.name)
-		articles = []
-		for article in Post.objects.all():
-			for cat in  article.category:
+		arts = []
+		for art in Article.objects.all():
+			for cat in  art.category:
 				if cat in cats:
-					articles.append(article)
+					arts.append(art)
 		context = {
-			'news' : articles,
+			'news' : arts,
 		}	
 	return render(request, 'news/financial.html', context)	
 
@@ -36,19 +51,19 @@ def financial(request):
 def rub(request):
 	if request.user.is_anonymous:
 		context = {
-			'news' : Post.objects.all(),
+			'news' : Article.objects.all(),
 		}
 	else:
 		cats = []
 		for field in request.user.profile._meta.fields:
 			if field.value_from_object(request.user.profile) == True:
 				cats.append(field.name)
-		articles = []
-		for article in Post.objects.all():
-			for cat in  article.category:
+		arts = []
+		for art in Article.objects.all():
+			for cat in  art.category:
 				if cat in cats:
-					articles.append(article)
+					arts.append(art)
 		context = {
-			'news' : articles,
+			'news' : arts,
 		}	
 	return render(request,'news/rub.html', context)

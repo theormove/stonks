@@ -10,7 +10,7 @@ print(os.getcwd())
 os.environ['DJANGO_SETTINGS_MODULE'] =  'stonks.settings'
 django.setup()
 
-from news.models import Post
+from news.models import Article
 
 def check_for_updates():
 
@@ -18,13 +18,13 @@ def check_for_updates():
         try:
             posts = aj_gather_data()
             for post in posts:
-            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
+            	Article(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
             posts = re_gather_data()
             for post in posts:
-            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
+            	Article(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
             posts = ec_gather_data()
             for post in posts:
-            	Post(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
+            	Article(title = post.title, content = post.text, source = post.link, category = categorizer(post.text)).save()
             time.sleep(60)
 
         except ConnectionError:
