@@ -1,1 +1,1 @@
-web: gunicorn stonks.stonks.wsgi
+web: gunicorn stockmoon.wsgi
