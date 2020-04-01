@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['stockmoon.herokuapp.com','127.0.0.1']
 INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'users.apps.UsersConfig',
+    'API.apps.ApiConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -149,7 +150,9 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
-    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',
+),
+
 }
 
 #django_heroku.settings(locals())

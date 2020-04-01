@@ -5,11 +5,11 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register('article', views.ArticleView)
-router.register('user', views.UserView)
 router.register('profile', views.ProfileView)
+router.register('stock', views.StockPriceView)
 urlpatterns = [
-    path('', include(router.urls)),
+	path('', include(router.urls)),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
-    path('auth/', include('djoser.urls')),
+   	path('auth/', include('djoser.urls')),
 ]
