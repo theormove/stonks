@@ -4,10 +4,11 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - 1337:80
+      - 80:80
     volumes:
       - static_volume:/home/stonks/staticfiles
       - media_volume:/home/stonks/mediafiles
+      - nginx_logs_volume:/var/log/nginx
     depends_on:
       - web
   web:
@@ -17,7 +18,7 @@ services:
     expose:
       - 8000
     env_file:
-      - ./stonks.env.debug
+      - ./stonks.env.production
     volumes:
       - static_volume:/home/stonks/staticfiles
       - media_volume:/home/stonks/mediafiles
@@ -35,3 +36,4 @@ volumes:
   postgres_data:
   static_volume: 
   media_volume:
+  nginx_logs_volume:
