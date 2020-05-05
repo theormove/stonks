@@ -1,0 +1,1 @@
+from economy_classifier.economy_classifier import article_classify

@@ -1,0 +1,2 @@
+http://feeds.washingtonpost.com/rss/world?tid=lk_inline_manual_13&itid=lk_inline_manual_13
+http://feeds.washingtonpost.com/rss/business?tid=lk_inline_manual_14&itid=lk_inline_manual_14

@@ -1,12 +1,12 @@
 body{
 	margin: 0;
 	padding: 0;
-	background-color: white;
+	background-color: black;
 	font-family: 'Varela Round', sans-serif;
 }
 a{
 	text-decoration:none;
-	color: black;
+	color: white;
 }
 
 *,
@@ -63,7 +63,7 @@ a{
 	top: 0;
 	left: 0;
 	position: absolute;
-	background: #F2F0F0;
+	background: black;
 	box-shadow: 0 0  2px grey;
 	z-index: 1000;
 }
@@ -110,14 +110,14 @@ ul, li{
 }
 .menu_paraghraph{
 	text-transform: uppercase;
-	color: black;
+	color: white;
 }
 .main_li:after{
 	content: "";
 	display: block;
 	width: 1px;
 	height: 5px;
-	background-color: #3C994E;
+	background-color: #3c994e;
 	opacity: 0;
 	position: absolute;
 	bottom: 8px;
@@ -142,7 +142,7 @@ ul, li{
 	top: 51px;
 	left: 0;
 	height: 225px;
-	background-color: #F2F0F0;
+	background-color: black;
 	text-transform: none;
 	cursor: auto;
 	color: white;
@@ -202,6 +202,7 @@ main{
 	display: block;
 	font-size: 30px;
 	text-transform: uppercase;
+	color:white;
 	font-weight: bold;
 }
 .page_name:after{
@@ -221,10 +222,10 @@ main{
 }
 .page_paraghraph{
 	padding: 0 10px;
-	border-right: 2px solid grey;
+	border-right: 2px white;
 }
 .page_paraghraph a{
-	color: grey;
+	color: white;
 	font-size: 20px;
 }
 .page_paraghraph.choosed a{
@@ -233,81 +234,147 @@ main{
 .page_paraghraph:hover a{
 	color: #3C994E;
 }
-.charts{
-	overflow: auto;
-}
-.chart_wrapper{
-	width: calc(50% - 30px);
-	height: 400px;
-	float: left;
-	margin: 15px;
-	position: relative;
-}
-.chart{
-	background-color: white;
-	height: 350px;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	border: 1px solid grey;
-}
-.chart_header{
-	height: 50px;
-	width: 100%;
+.info_wrapper{
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
+	height: 500px;
 }
-.chart_name{
-	font-size: 20px;
+.left_wrapper{
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	width: calc(40% - 30px);
+	height: 100%;
+
 }
-.chart_name:after{
-	content: "";
-	display: block;
-	width: 25px;
-	height: 5px;
-	background-color: #3C994E;
-}
-.chart_info{
-	width: 22%;
+.right_wrapper{
+	padding: 15px;
+	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: start;
+}
+.chart_wrapper{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	border: 1px solid black;
+}
+.charts_header{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-bottom: 15px;
+
+}
+.chart_type{
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+.chart_type_link{
+	font-size: 20px;
+}
+.chart_type_link:hover{
+	border-bottom: 2px white;
+}
+.chart_type_link.choosed{
+	border-bottom: 2px solid black;
+}
+.chart{
+	border:0.2em solid aqua
+	top: 65px; /* Расстояние от верхнего края */
+        left: 110px; /* Расстояние от левого края */ 
+        bottom: 0; right: 0;
+	height: 300px;
+	width: 100%;
+	position: relative;
+	bottom: 0;
+	border: 1px solid grey;
+}
+.chart_info_wrapper{
+	height: 100%;
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.chart_info{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
+
 }
-.info_name{
-	color: grey;
-	font-size: 15px;
-	margin-top: 10px;
+.search{
+	height: 100px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	border-bottom: 15px double #ce56e8;
+	border-top: 15px double #ce56e8;
 }
-.info_value{
-	font-size: 15px;
-	line-height: 1;
+.search_bar{
+	color: #2d2d35;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border: 0;
+    width: 100%;
 }
-.last_news{
+.news_wrapper{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.news{
+	width: 100%;
+	height: 20%;
+	border-bottom: .0625rem #999 dotted;
+	padding: .25rem 0;
+	position: relative;
+}
+.news_story{
+	width: 100%;
+    font-size: .875rem;
+    padding: .25rem 0;
+}
+.news_data{
+	padding-top: .5625rem;
+	font-size: .625rem;
+    font-size: 10px;
+    color: black;
+    color: grey;
+    text-transform: uppercase;
+}
+.news_story_url:hover{
+	color: #3C994E;
+}
+.last_news_wrapper{
 	margin: 10px 15px 15px 15px;
 	display: flex;
 	flex-direction: column;
 }
-.news_header{
+.last_news_header{
 	font-weight: bold;
+	color:#ce56e8;
 	font-size: 25px;
 }
-.news_header:after{
+.last_news_header:after{
 	content: "";
 	display: block;
 	width: 25px;
 	height: 5px;
 	background-color: #3C994E;
 }
-.news{
+.last_news{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
-.news_wrapper{
+.last_new{
 	height: 200px;
 	width: 25%;
 	background-color: white;

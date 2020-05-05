@@ -1,26 +1,18 @@
 {% extends "news/base.html" %}
-
+{% load static %}
+{% block style %} <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" ></script> {% endblock style %}
 {% block content %}
+				<div class="container-fluid">
 				<section class="section start">
-					<div class="slogan">СОСАТЬ - не ВРЕДНО, а даже ПОЛЕЗНО</div>
+					<div id="particles-js"></div>
+					<script src="{% static 'news/particles.js' %}"></script>
+					<script src="{% static 'news/js/app.js' %}"></script>
+					<h1 class="name_logo">Stockmoon</h1>
 				</section>
-				<section class="section how">
-					<input type="button" id="button" value="Кнопка">
-					<script>
-					  button.onclick = function() {
-					    alert( 'Текущая прокрутка сверху: ' + window.pageYOffset );
-					    var scrollHeight = Math.max(
-						  document.body.scrollHeight, document.documentElement.scrollHeight,
-						  document.body.offsetHeight, document.documentElement.offsetHeight,
-						  document.body.clientHeight, document.documentElement.clientHeight
-						);
-
-						alert( 'Высота с учётом прокрутки: ' + scrollHeight );
-						};
-					</script>
-					КАК
+				<section class="section how">		
 				</section>
 				<section class="section about">
 					О нас
 				</section>
+			</div>
 {% endblock content %}	

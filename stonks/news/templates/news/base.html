@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>sasat</title>
-    <link href="#" rel="icon" type="{% static 'news/300.png' %}"/>
     <link rel="stylesheet" href="{% static 'news/style/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'news/style/css/bootstrap-grid.css' %}">
     {% block style %} {% endblock style %}
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
@@ -85,7 +83,7 @@
 			</div>
 		</header>
 		<main>	
-			<div class="container">
+			<div class="container1">
 				{% if messages %}
 				{% for message in messages %}
 					<div class="alert alert-{{ message.tags }}"> {{ message }}</div>
