@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/home/stonks/staticfiles
+      - media_volume:/home/stonks/mediafiles
+      - nginx_logs_volume:/var/log/nginx
+    depends_on:
+      - web
+  web:
+    build:
+      context: ./stonks
+    command: /bin/sh -c "gunicorn stonks.wsgi:application --bind 0.0.0.0:8000"
+    expose:
+      - 8000
+    env_file:
+      - ./stonks.env.production
+    volumes:
+      - static_volume:/home/stonks/staticfiles
+      - media_volume:/home/stonks/mediafiles
+    depends_on:
+      - postgresdb
+
+  postgresdb:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./postgres.env
+
+volumes:
+  postgres_data:
+  static_volume: 
+  media_volume:
+  nginx_logs_volume:

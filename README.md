@@ -1,5 +1,5 @@
 
-# StockMoon API Reference
+# StockMoon Project Reference
 
 As of this writing, the following API endpoints exist: 
 ##### `/API/token/`- returns two jwt tokens used for user authentification.
@@ -176,4 +176,48 @@ If you provide an invalid or expired token, you will get a `401 Unauthorized` an
 }
 ```
 If token is not provided, the server will throw a `401 Unauthorized`.
+---
+# Jenkins and Docker deployment and setup procedure.
+    In this manual it is layed out how to setup  Jenkins and Docker on a  server and deploy our environment onto the server. 
+    A quick guid on how to interact with  docker containers and volumes is present in this section too.
+### Step 1: Install Docker
+Refer to Docker documentation located [here](https://docs.docker.com/engine/install/ubuntu/).
+### Step 2: Install and pre-configure Jenkins
+RTFM [here](https://jenkins.io/doc/book/installing/#debianubuntu). By default, Jenkins is running on http://localhost:8080. You have to install the following plugins in order to be able to proceed:
+    - __[Git Plugin](https://plugins.jenkins.io/git/)__
+    - __[Github Plugin](https://plugins.jenkins.io/github/)__
+### Step 3: Configure Jenkins to play nice with Docker
+If you try to execute a docker command inside jenkins, you will get an error saying that a docker server is not accessible. In order to fix this issue, you have to add a `jenkins` user to the `docker` group and make docker server listen on a specific port. To do that, run `sudo gpasswd -a jenkins docker`. Next step is to edit docker service config file(`/usr/lib/systemd/system/docker.service
+`) with your favourite text editor and append `-H tcp://localhost:2375` at the end of the `ExecStart` line. Now, you have to reload daemon config files with `sudo systemctl daemon-reload` and restart Docker and Jenkins: 
+`sudo systemctl restart docker && sudo systemctl restart jenkins`.
+### Step 4: Add a new Jenkins build Job
+Go to Jenkins dashboard, select `New item`, choose a `Freestyle project` option and enter a job name. Scroll down to the `Source Control Management` section, select `Git` and add a repository url, your credentials and a branch to clone. 
 
+__Disclaimer__
+Since at the time of this writing I was not able to set up a proper webhook-triggered job, this guide shows how to create a simple polling job that checks a repo once in so while. Although when we will have a public  IP address for Jenkins to run on, this documentation page will be changed to fit.
+__Disclaimer ended__
+
+Next you need to go to the `Build triggers` section and tell Jenkins to  `Poll SCM`. You have to provide a `cron-like` schedule for Jenkins to check a repo on a specific time  intervals.
+[Cron string documentation](https://support.acquia.com/hc/en-us/articles/360004224494-Cron-time-string-format)
+
+### Step 5: Add a build script
+Scroll down to `Build` section, click on `Add build step` and add a new `shell` step. Next, add the following lines to the `Command` input field:
+```
+chmod +x ./jenkins-buildscript.sh
+./jenkins-buildscript.sh
+```
+This will run a script that is going to build three Docker containers that you can see if you run `docker ps`:
+- `$JOB_NAME_web` - a Django container with a gunicorn wsgi server running on port 8000. This port is exposed only to these three containers.
+- `$JOB_NAME_nginx` - an Nginx container that acts as a reverse proxy for our gunicorn server and serves static files and media.
+- `postgres` - a PostgreSQL Server.
+### Overview of Docker volumes used by Docker containers
+A `Docker volume` is a tool that allows for data persistence. 
+Conceptually it works just like a USB drive or any other persistent storage device - you can mount it wherever you want and later access it with your typical linux tools such as `ls, vim` and others. Currently there are three `Docker volumes` used by the aforementioned containers:
+- `nginx_logs_volume` - correspons to the `/var/log/nginx` directory and stores all of the nginx logs.
+- `static_volume` - stores Django static files and is used in order for Nginx to be able to access them, since Django and Nginx are running in different containers.
+- `media_volume` - stores Django media files.
+
+__To get all mounted volumes__, run `docker volume ls`. 
+__To remove a specific volume__, run `docker volume rm volume_name`
+__To inspect a specific volume__, run `docker volume inspect volume_name`
+If you want to interact with the files stored in that volume, go to the `Mountpoint` directory.
